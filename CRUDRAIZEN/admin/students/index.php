@@ -8,7 +8,26 @@
     }
     $sql = "SELECT * FROM users WHERE role = 'student' ORDER BY id DESC ";
     $result = mysqli_query($conn, $sql);
+   $message = "";
+        if(isset($_POST["save"])){
+            //Collect data from form
+            $student_no = $_POST["student_no"];
+            $full_name = $_POST["full_name"];
+            $username = $_POST["username"];
+            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $sql = "INSERT INTO users (`student_no`, `full_name`, `username`, `password`, `role`)
+            VALUES ('$student_no', '$full_name', '$username', '$password', 'student')";
 
+            if(mysqli_query($conn, $sql)){
+                header("Location: index.php?message=Student added successfully! ");
+                exit;
+            }
+            else {
+                $message = "Could not save the record.";
+            }
+            
+
+        }
 ?>
 
 <!doctype html>
