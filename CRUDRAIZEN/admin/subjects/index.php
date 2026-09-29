@@ -116,25 +116,15 @@ $result = mysqli_query($conn, $sql);
                                 Edit
                                 </a>
 
-                                <form
-                                action="delete.php"
-                                method="POST"
-                                style="display:inline;"
-                                onsubmit="return confirm('Are you sure you want to delete this subject?');"
-                                >
-                                    <input
-                                    type="hidden"
-                                    name="id"
-                                    value="<?php echo $row['id']; ?>"
-                                    >
-
-                                    <button
-                                    type="submit"
+                                
+                                    <a
                                     class="btn btn-danger btn-sm"
-                                    >
+                                    href="delete.php?id=<?php echo $row['id'];?>"
+                                    onclick="return confirm ('Are you sure you want to delete this record?')"
+                                >
                                     Delete
-                                    </button>
-                                </form>
+                                </a>
+                                
                             </td>
                         </tr>
                     <?php } ?>

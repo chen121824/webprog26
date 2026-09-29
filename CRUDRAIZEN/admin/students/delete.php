@@ -10,7 +10,7 @@
    
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     //delete sql command
-    mysqli_query($conn, "DELETE FROM subjects WHERE id = $id ");
+    mysqli_query($conn, "DELETE FROM users WHERE id = $id AND role = 'student' ");
     header("Location: index.php");
     exit;
 
